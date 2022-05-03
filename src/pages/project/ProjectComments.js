@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import './project.css'
+import { timestamp } from '../../firebase/config'
 
 const ProjectComments = () => {
   const { user } = useAuthContext()

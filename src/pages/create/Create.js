@@ -73,6 +73,7 @@ const Create = () => {
       dueDate: timestamp.fromDate(new Date(dueDate)),
       category: category.value,
       assignedUsers: assignedUsersList,
+      comments: [],
       createdBy,
     }
     await addDocument(project)

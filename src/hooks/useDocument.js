@@ -13,7 +13,6 @@ export const useDocument = (collection, id) => {
       (snapshot) => {
         // need to make sure the doc exists & has data
         if (snapshot.data()) {
-          console.log(snapshot.data())
           setDocument({ ...snapshot.data(), id: snapshot.id })
           setError(null)
         } else {
