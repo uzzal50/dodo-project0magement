@@ -19,9 +19,20 @@ const ProjectList = ({ projects }) => {
             className='card'
           >
             <Link to={`/projects/${project.id}`}>
-              <h4>{project.name}</h4>
+              <h4>
+                {project.name.charAt(0).toUpperCase() + project.name.slice(1)}
+              </h4>
               <p>Due by {project.dueDate.toDate().toDateString()}</p>
-              <p>{project.urgency}</p>
+              <p
+                className={
+                  project.urgency === 'high' || project.urgency === 'urgent'
+                    ? 'danger'
+                    : 'success'
+                }
+              >
+                {project.urgency.charAt(0).toUpperCase() +
+                  project.urgency.slice(1)}
+              </p>
               <div className='assigned-to'>
                 <p>
                   <strong>Assigned to:</strong>
@@ -29,7 +40,7 @@ const ProjectList = ({ projects }) => {
                 <ul>
                   {project.assignedUsers.map((user) => (
                     <li key={user.photo}>
-                      <Avatar src={user.photo} />
+                      <Avatar src={user.photo} name={user.displayName} />
                     </li>
                   ))}
                 </ul>

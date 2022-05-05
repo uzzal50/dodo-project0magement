@@ -1,6 +1,6 @@
 .sidebar {
-  width: 300px;
-  min-width: 300px;
+  /* width: 300px;
+  min-width: 300px; */
   background: var(--primary-color);
   min-height: 100vh;
   box-sizing: border-box;
@@ -15,8 +15,15 @@
   font-weight: bold;
   text-align: center;
   letter-spacing: 1px;
-  padding: 40px 30px;
+  padding: 40px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: start;
+
+  justify-content: space-between;
+}
+.sidebar .user p {
+  white-space: nowrap;
 }
 .sidebar .links {
   margin-top: 80px;
@@ -45,4 +52,11 @@
 }
 .sidebar .links .active img {
   filter: invert(40%);
+}
+.sidebar span {
+  white-space: nowrap;
+}
+.bars {
+  width: 40px;
+  height: 40px;
 }

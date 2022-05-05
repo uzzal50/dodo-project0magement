@@ -29,7 +29,7 @@ const ProjectSummary = ({ project }) => {
         <div className='assigned-users'>
           {project.assignedUsers.map((user) => (
             <div key={user.id}>
-              <Avatar src={user.photo} />
+              <Avatar src={user.photo} name={user.displayName} />
             </div>
           ))}
         </div>

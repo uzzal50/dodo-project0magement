@@ -38,7 +38,10 @@ const ProjectComments = ({ project }) => {
             return (
               <li key={comment.id}>
                 <div className='comment-author'>
-                  <Avatar src={comment.photoURL}></Avatar>
+                  <Avatar
+                    src={comment.photoURL}
+                    name={comment.displayName}
+                  ></Avatar>
                   <p>{comment.displayName}</p>
                 </div>
                 <div className='comment-date'>

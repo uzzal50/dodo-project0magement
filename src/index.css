@@ -80,3 +80,11 @@ textarea {
   padding: 8px;
   margin: 10px 0;
 }
+
+.danger {
+  color: var(--highlight-color);
+}
+
+.success {
+  color: green;
+}
