@@ -144,7 +144,12 @@ const Create = () => {
           />
         </label>
         {errorMessage && <div className='error'>{errorMessage}</div>}
-        <button className='btn'>Add Project</button>
+        {response.isPending && (
+          <button className='btn' disabled>
+            Creating...
+          </button>
+        )}
+        {!response.isPending && <button className='btn'>Add Project</button>}
       </form>
     </div>
   )
