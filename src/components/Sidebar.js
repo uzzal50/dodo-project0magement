@@ -23,18 +23,13 @@ const Sidebar = () => {
     let sidebarContentWidth =
       sidebarContentRef.current &&
       sidebarContentRef.current.getBoundingClientRect().width
-    console.log(sidebarContentWidth)
-    if (isOpen) {
-      console.log('ag')
 
+    if (isOpen) {
       sidebarContainerRef.current.style.width = `${sidebarContentWidth}px`
     } else {
       sidebarContainerRef.current.style.width = `${sidebarContentWidth}px`
     }
   }, [isOpen])
-
-  console.log(sidebarContainerRef.current)
-  console.log(isOpen)
 
   const animation = {
     hidden: {
