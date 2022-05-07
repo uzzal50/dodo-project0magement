@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Bars from '../assets/vars.svg'
 import Tippy from '@tippyjs/react'
 import { useThemeContext } from '../context/ThemeContext'
+import Avatar from './Avatar'
 
 const Sidebar = () => {
   const { user } = useAuthContext()
@@ -23,7 +24,6 @@ const Sidebar = () => {
     let sidebarContentWidth =
       sidebarContentRef.current &&
       sidebarContentRef.current.getBoundingClientRect().width
-
     if (isOpen) {
       sidebarContainerRef.current.style.width = `${sidebarContentWidth}px`
     } else {
@@ -62,6 +62,9 @@ const Sidebar = () => {
             {/* avatar & username here later */}
             <div>
               <AnimatePresence>
+                {isOpen && (
+                  <Avatar src={user.photoURL} name={user.displayName} />
+                )}
                 {isOpen && (
                   <motion.h4
                     variants={animation}
