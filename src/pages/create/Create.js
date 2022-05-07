@@ -6,6 +6,8 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import { useFirestore } from '../../hooks/useFirestore'
 import './create.css'
 import { useNavigate } from 'react-router-dom'
+import { useThemeContext } from '../../context/ThemeContext'
+import { useHover } from '../../utils/useHover'
 
 const categories = [
   { value: 'development', label: 'Development' },
@@ -35,6 +37,8 @@ const Create = () => {
   const { user } = useAuthContext()
   const { addDocument, response } = useFirestore('projects')
   const navigate = useNavigate()
+  const { color } = useThemeContext()
+  const { hoverHandler, removeHoverHandler } = useHover(color)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -93,7 +97,9 @@ const Create = () => {
 
   return (
     <div className='create-form'>
-      <h2 className='page-title'>Create a new Project</h2>
+      <h3 className='page-title' style={{ color }}>
+        Create a new Project
+      </h3>
       <form onSubmit={handleSubmit}>
         <label>
           <span>Project name:</span>
@@ -149,7 +155,17 @@ const Create = () => {
             Creating...
           </button>
         )}
-        {!response.isPending && <button className='btn'>Add Project</button>}
+        {!response.isPending && (
+          <button
+            className='btn'
+            onMouseOver={(e) => {
+              hoverHandler(e)
+            }}
+            onMouseLeave={(e) => removeHoverHandler(e)}
+          >
+            Add Project
+          </button>
+        )}
       </form>
     </div>
   )

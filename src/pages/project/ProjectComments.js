@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import './project.css'
-import { useParams } from 'react-router-dom'
 import { timestamp } from '../../firebase/config'
 import { useFirestore } from '../../hooks/useFirestore'
 import Avatar from '../../components/Avatar'
+import { useThemeContext } from '../../context/ThemeContext'
 
 const ProjectComments = ({ project }) => {
   const { user } = useAuthContext()
   const [newComment, setNewComment] = useState('')
   const { updateDocument, response } = useFirestore('projects')
+  const { color } = useThemeContext()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -31,7 +32,7 @@ const ProjectComments = ({ project }) => {
 
   return (
     <div className='project-comments'>
-      <h4>Project Comments</h4>
+      <h3>Project Comments</h3>
       <ul>
         {project.comments.length > 0 &&
           project.comments.map((comment) => {
@@ -62,7 +63,17 @@ const ProjectComments = ({ project }) => {
             value={newComment}
           ></textarea>
         </label>
-        <button className='btn'>Add Comment</button>
+        <button
+          className={
+            color === 'red'
+              ? 'btn btn-danger-br'
+              : color === 'green'
+              ? 'btn btn-success-br'
+              : 'btn btn-default-br'
+          }
+        >
+          Add Comment
+        </button>
       </form>
     </div>
   )

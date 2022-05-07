@@ -12,7 +12,7 @@
   border-radius: 4px;
 }
 .project-summary .due-date {
-  margin: 10px 0;
+  margin: 2px 0;
   font-size: 0.9em;
   color: var(--title-color);
 }
@@ -39,7 +39,7 @@
 
 /* project comments */
 .project-comments label {
-  margin-bottom: 0px;
+  margin-bottom: 1rem;
 }
 .project-comments textarea {
   min-height: 40px;
@@ -76,4 +76,7 @@
 .comment-content {
   color: var(--text-color);
   font-size: 0.9em;
+}
+.add-comment {
+  margin: 2rem 0;
 }

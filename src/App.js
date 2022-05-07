@@ -14,16 +14,18 @@ import Project from './pages/project/Project'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import OnlineUers from './components/OnlineUers'
+import { useThemeContext } from './context/ThemeContext'
 
 function App() {
   const { user, authIsReady } = useAuthContext()
+  const { mode } = useThemeContext()
   return (
     <div className='App'>
       {authIsReady && (
         <Router>
           {user && <Sidebar />}
 
-          <div className='container'>
+          <div className={`container ${mode}`}>
             <Navbar />
             <Routes>
               <Route

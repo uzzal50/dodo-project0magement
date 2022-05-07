@@ -11,7 +11,7 @@ const OnlineUers = () => {
 
   return (
     <div className='user-list'>
-      <h2>All Users</h2>
+      <h3>All Users</h3>
       {/* {isPending && <div>Loading users...</div>} */}
       {error && <div>{error}</div>}
       {documents &&

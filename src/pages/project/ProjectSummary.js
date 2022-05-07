@@ -8,7 +8,6 @@ const ProjectSummary = ({ project }) => {
   const { user } = useAuthContext()
   const { deleteDocument } = useFirestore('projects')
   const navigate = useNavigate()
-  console.log(project)
 
   const clickHandler = (e) => {
     e.preventDefault()
@@ -19,8 +18,8 @@ const ProjectSummary = ({ project }) => {
   return (
     <div>
       <div className='project-summary'>
-        <h2 className='page-title'>{project.name}</h2>
-        <p>{user.displayName}</p>
+        <h3 className='page-title'>{project.name}</h3>
+        <p>By : {user.displayName}</p>
         <p className='due-date'>
           Project due by {project.dueDate.toDate().toDateString()}
         </p>
