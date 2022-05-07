@@ -49,13 +49,9 @@ const Dashboard = () => {
           case 'sales':
             return document.category === currentfilter
           case term:
-            if (!term) {
-              return false
-            } else {
-              return document.name.toLowerCase().includes(term)
-            }
+            return document.name.toLowerCase().includes(term)
 
-          case sortProject:
+          case sortProject.value:
             return document.urgency.toLowerCase() === sortProject.value
           default:
             return true
