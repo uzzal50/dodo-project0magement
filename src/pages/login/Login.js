@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLogin } from '../../hooks/useLogin'
 import './login.css'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [index, setIndex] = useState(1)
+  const [currentText, setCurrentText] = useState('')
+  const [mainText, setMainText] = useState('Login...')
   const { login, error, isPending } = useLogin()
 
   const handleSubmit = (e) => {
@@ -12,9 +15,26 @@ const Login = () => {
     login(email, password)
   }
 
+  console.log(mainText.length, index, currentText)
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setCurrentText((old) => old + mainText.charAt(index))
+      setIndex((old) => setIndex(old + 1))
+    }, 700)
+
+    if (index > mainText.length - 1) {
+      setCurrentText('')
+
+      setIndex(1)
+    }
+
+    return () => clearTimeout(timeOut)
+  }, [currentText])
+
+  useEffect(() => {}, [])
   return (
     <form onSubmit={handleSubmit} className='auth-form'>
-      <h2>login</h2>
+      <h2>L{currentText}</h2>
       <label>
         <span>email:</span>
         <input
